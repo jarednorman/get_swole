@@ -1,0 +1,7 @@
+%footer
+  - if current_user
+    %a.admin-controls-link{href: "/session", data: { method: "DELETE" } }
+      Log out (#{current_user.email})
+  - else
+    %a.admin-controls-link{href: "/session/new"}
+      Login
