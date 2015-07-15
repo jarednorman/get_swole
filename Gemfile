@@ -8,6 +8,7 @@ gem "unicorn", require: false
 gem "sequel"
 gem "pg"
 gem "bcrypt"
+gem "rake"
 
 gem "haml"
 gem "susy"

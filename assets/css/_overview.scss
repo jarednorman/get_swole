@@ -1,0 +1,35 @@
+.program {
+}
+
+.program-maxes,
+.program-week {
+  @include container;
+  margin-bottom: 0.5rem;
+}
+
+.program-max {
+  @include span(3 of 12);
+  text-align: center;
+}
+
+.program-week-day {
+  @include span(3 of 12);
+  height: 1.5rem;
+  cursor: pointer;
+
+  &:nth-child(1) {
+    background-color: blue;
+  }
+
+  &:nth-child(2) {
+    background-color: red;
+  }
+
+  &:nth-child(3) {
+    background-color: green;
+  }
+
+  &:nth-child(4) {
+    background-color: yellow;
+  }
+}
