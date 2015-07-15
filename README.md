@@ -5,13 +5,19 @@
 ```sh
 # Pull in dependencies.
 $ bundle
+
 # Create a get_swole user.
 $ createuser -U postgres get_swole
-# Create the development and test databases.
-$ bundle exec rake db:create
-$ RACK_ENV=test bundle exec rake db:create
-$ bundle exec rake db:migrate
-$ RACK_ENV=test bundle exec rake db:migrate
+
+# Setup the development database.
+$ bundle exec rake db:create db:migrate
+
+# Setup the test database.
+$ RACK_ENV=test bundle exec rake db:create db:migrate
+
+# Run tests to make sure things are set up right.
+$ bundle exec rspec
+
 # Start up the server
 $ bundle exec rackup
 ```
