@@ -7,7 +7,6 @@ RSpec.describe "sessions", type: :feature do
 
   scenario "logging in and then out" do
     visit "/"
-    click_on "Login"
 
     within('form') do
       fill_in "email", with: "admin@example.com"

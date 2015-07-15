@@ -28,10 +28,6 @@ module GetSwole
       end
 
       request.on "session" do
-        request.get "new" do
-          view "login"
-        end
-
         request.is do
           request.post do
             user = User.find(email: request.params["email"])

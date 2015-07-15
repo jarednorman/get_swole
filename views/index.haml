@@ -1,1 +1,8 @@
-%p TODO
+%form{method: "POST", action: "/session"}
+  %label{for: "email"} E-Mail
+  %input{type: "text", name: "email", placeholder: "e-mail"}
+  %label{for: "password"} Password
+  %input{type: "password", name: "password", placeholder: "password"}
+
+  %input{type: "submit", value: "Login"}
+
