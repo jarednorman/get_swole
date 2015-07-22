@@ -27,6 +27,16 @@ module GetSwole
         view "index"
       end
 
+      request.on "api" do
+        request.on "user/:id" do |id|
+          user = User.find(id: id)
+
+          request.post "edit" do
+            user.update(request.params["user"])
+          end
+        end
+      end
+
       request.on "session" do
         request.is do
           request.post do
