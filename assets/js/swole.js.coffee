@@ -4,6 +4,8 @@
 #= require handlebars/handlebars
 #= require rails-behaviors/method
 
+Handlebars.registerHelper "exerciseName", (exercise) -> exercise.name
+Handlebars.registerHelper "exerciseMax", (exercise) -> exercise.max
 Handlebars.registerHelper "stringify", (data) -> JSON.stringify(data)
 Handlebars.registerHelper "displayReps", (set) -> set.reps
 Handlebars.registerHelper "displayWeight", (set) -> set.weight
@@ -17,13 +19,16 @@ dayTemplate = Handlebars.compile """
 programTemplate = Handlebars.compile """
   <div class="program-maxes">
     {{#each exerciseTitles}}
-      <div class="program-max">{{this}}</div>
+      <div class="program-max">
+        {{exerciseName this}}
+        <br>
+        {{exerciseMax this}}
+      </div>
     {{/each}}
     {{#each weeks}}
       <div class="program-week">
         {{#each this}}
           <div class="program-week-day" data-sets='{{stringify this}}'>
-            &nbsp;
           </div>
         {{/each}}
       </div>
@@ -43,7 +48,10 @@ $ ->
       _.map program, (exercise) -> exercise.oneRepMax
 
   exerciseTitles = exerciseNames.combine exerciseMaxes, (names, maxes) ->
-    _.map _.zip(names, maxes), (exercise) -> "#{exercise[0]}: #{exercise[1]}"
+    _.map _.zip(names, maxes), (exercise) -> {
+      name: exercise[0],
+      max: exercise[1]
+    }
 
   weeks = program
     .map (program) ->
