@@ -62,7 +62,14 @@ module GetSwole
 
     def weight(scale, one_rep_max)
       return scale if scale.nil?
-      (scale * one_rep_max - BAR).round(-1) + BAR
+      round_to_nearest(
+        scale * one_rep_max - BAR,
+        user.nearest_round || 10
+      ) + BAR
+    end
+
+    def round_to_nearest(value, nearest)
+      (value / nearest).round * nearest
     end
   end
 end
