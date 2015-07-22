@@ -39,5 +39,6 @@ module GetSwole
   Unreloader.require('./get_swole/assets.rb')
   Unreloader.require('./get_swole/models/')
   Unreloader.require('./get_swole/helpers/')
+  Unreloader.require('./get_swole/schedule.rb')
   Unreloader.require('./get_swole/app.rb')
 end
