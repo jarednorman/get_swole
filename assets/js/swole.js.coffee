@@ -5,6 +5,14 @@
 #= require rails-behaviors/method
 
 Handlebars.registerHelper "stringify", (data) -> JSON.stringify(data)
+Handlebars.registerHelper "displayReps", (set) -> set.reps
+Handlebars.registerHelper "displayWeight", (set) -> set.weight
+
+dayTemplate = Handlebars.compile """
+  {{#each sets}}
+    <div>{{displayReps this}} x {{displayWeight this}}</div>
+  {{/each}}
+"""
 
 programTemplate = Handlebars.compile """
   <div class="program-maxes">
@@ -48,10 +56,18 @@ $ ->
         _.map weeks, (exerciseDays) ->
           exerciseDays[n]
 
-  templateParams = Bacon.combineTemplate({
+  overviewTemplateParams = Bacon.combineTemplate({
     exerciseTitles: exerciseTitles,
     weeks: weeks
   })
 
-  templateParams.onValue (params) ->
+  overviewTemplateParams.onValue (params) ->
     $('.program').html programTemplate(params)
+
+  activeDay = $('.program').asEventStream('click', '.program-week-day')
+    .map (clickEvent) -> $(clickEvent.target).data("sets")
+
+  dayTemplateParams = activeDay.map (day) -> {sets: day}
+
+  dayTemplateParams.onValue (params) ->
+    $('.program-day').html dayTemplate(params)

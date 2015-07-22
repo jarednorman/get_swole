@@ -2,6 +2,7 @@
   :javascript
     window.swoleProgram = #{GetSwole::Schedule.new(current_user).to_json}
   .program
+  .program-day
 - else
   %form{method: "POST", action: "/session"}
     %label{for: "email"} E-Mail
