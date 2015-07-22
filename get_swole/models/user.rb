@@ -1,5 +1,8 @@
 module GetSwole
   class User < Sequel::Model
+    set_allowed_columns :one_rep_max_bench, :one_rep_max_deadlift,
+      :one_rep_max_military, :one_rep_max_squat
+
     plugin :validation_helpers
 
     def validate
