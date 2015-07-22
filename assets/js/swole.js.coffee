@@ -75,6 +75,10 @@ $ ->
   activeDay = $('.program').asEventStream('click', '.program-week-day')
     .map (clickEvent) -> $(clickEvent.target).data("sets")
 
+  showDay = activeDay.map (day) -> !!day
+
+  showDay.assign $('.program-day'), 'toggleClass', 'active'
+
   dayTemplateParams = activeDay.map (day) -> {sets: day}
 
   dayTemplateParams.onValue (params) ->
