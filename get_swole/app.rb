@@ -35,7 +35,7 @@ module GetSwole
             user.update(request.params["user"])
           end
         end
-      end
+      end if current_user
 
       request.on "session" do
         request.is do
