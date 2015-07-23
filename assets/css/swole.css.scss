@@ -4,3 +4,18 @@
 @import "sass-material-colors/sass/sass-material-colors";
 
 @import "grid";
+
+@import "overview";
+@import "day";
+
+body {
+  padding: 0.5rem;
+  color: white;
+  background-color: #BBB;
+  font-family: Roboto Mono;
+}
+
+h1 {
+  text-align: center;
+  font-weight: normal;
+}

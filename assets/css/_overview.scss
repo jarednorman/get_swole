@@ -1,0 +1,23 @@
+.program {
+}
+
+.program-maxes,
+.program-week {
+  @include container;
+  margin-bottom: 0.5rem;
+}
+
+.program-max {
+  @include span(3 of 12);
+  text-align: center;
+  height: 4em;
+}
+
+.program-week-day {
+  @include span(3 of 12);
+  height: 1.5rem;
+  cursor: pointer;
+  height: 60px;
+  border-radius: 3px;
+  background-color: white;
+}
